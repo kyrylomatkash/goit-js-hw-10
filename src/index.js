@@ -61,7 +61,7 @@ function selectBreed(event) {
       loader.classList.add("is-hidden");
     });
 }
-// Завантаження інформації про кішку
+// Завантаження інформації про кішку та створення карти з усіма даними
 function renderCatInfo(data) {
   const { breeds, url } = data[0];
   const { name, temperament, description } = breeds[0];
