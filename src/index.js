@@ -9,6 +9,7 @@ const breedSelector = document.querySelector(".breed-select");
 const loader = document.querySelector(".loader");
 const error = document.querySelector(".error");
 const catInfo = document.querySelector(".cat-info");
+// Приховання основного тексту помилки
 error.classList.add("is-hidden");
 // Отримання списку пород
 function getBreedsList(breeds) {
@@ -19,7 +20,7 @@ function getBreedsList(breeds) {
 
 // Завантаження зі списку пород
 function fetchAndRenderBreeds() {
-    Notiflix.Notify.info("Завантаження");
+    Notiflix.Notify.info("Завантаження...");
   fetchBreeds()
     .then((result) => {
       getBreedsList(result);
@@ -27,7 +28,7 @@ function fetchAndRenderBreeds() {
     .then(() => new SlimSelect({ select: ".breed-select" }))
     .catch(() => {
         // Повідомлення про помилку
-      Notiflix.Notify.failure("Something went wrong! Please try again.", {
+      Notiflix.Notify.failure("Щось пішло не так,спробуйте ще раз або перезавантажте сторінку...", {
         timeout: 5000,
         cssAnimationStyle:fade,
         closeButton: true
@@ -51,7 +52,7 @@ function selectBreed(event) {
     })
     .catch(() => {
         // Повідомлення про помилку
-      Notiflix.Notify.failure("Something went wrong! Please try again.", {
+      Notiflix.Notify.failure("Щось пішло не так,спробуйте ще раз або перезавантажте сторінку...", {
         timeout: 5000,
         cssAnimationStyle:fade,closeButton:true
       });
@@ -72,5 +73,5 @@ function renderCatInfo(data) {
   </div>`;
   catInfo.innerHTML = catMarkup;
 }
-// Відображення інформації
+// Відображення всієї інформації на сторінці
 fetchAndRenderBreeds();
